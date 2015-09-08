@@ -1,14 +1,19 @@
 <html>
 <body>
 <!-- import as script or use browserify --> 
-<script src="./index.js"></script> 
+<script src="https://rawgit.com/screencloud/browser-cache-size-test/master/index.js"></script> 
 <script>
 
 // if using browserify 
 // var browserCacheSizeTest = require('browser-cache-size-test'); 
 
-browserCacheSizeTest(function(size){
-	alert("cache is about "+size+"mb"); 
+browserCacheSizeTest({
+	progress:function(loaded){
+		console.log("loaded..", loaded); 
+	},
+	complete:function(size){
+		alert("cache is about "+size+"mb"); 
+	}
 });
 
 </script>

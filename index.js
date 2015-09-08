@@ -26,6 +26,9 @@ function determineCacheSize(url, callback){
 	var onload = function(){
 		//console.log("count", count); 
 		count++;
+		if(callback.progress !== undefined){
+			callback.progress(count); 
+		}
 		if(count % 2 == 0){ // every other item 
 			cacheCheck(url + "?nc="+nc+"&c="+(count/2), function(isCached){
 				if(!isCached){
@@ -33,7 +36,11 @@ function determineCacheSize(url, callback){
 					image.onload = null; 
 					image = null; 
 					delete image;
-					callback(count); 
+					if(callback.complete !== undefined){
+						callback.complete(count);
+					} else {
+						callback(count);	
+					}
 				}
 			});
 		}
@@ -57,11 +64,22 @@ var size = 5;
 var unit = "mb";  
 
 var browserCacheSizeTest = function(callback){
-	determineCacheSize(url, function(count){
+	var complete = function(count){
 		var cacheSize = size * count; 
-		callback(cacheSize); 
-		// alert("cache is about.. "+cacheSize+" "+unit+" give of take "+count+" "+unit); 
-	});
+		if(callback.complete !== undefined){
+			callback.complete(cacheSize); 	
+		} else {
+			callback(cacheSize); 
+		}
+	}; 
+	var progress; 
+	if(callback.progress != undefined){
+		progress = function(count){
+			var loaded = size * count;
+			callback.progress(loaded);  
+		};
+	}
+	determineCacheSize(url, {complete: complete, progress: progress});
 }
 
 try {
