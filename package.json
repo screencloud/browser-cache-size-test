@@ -1,0 +1,25 @@
+{
+  "name": "browser-cache-size-test",
+  "version": "1.0.0",
+  "description": "works out browser cache size limit by filling cache with images loaded from cloudfront",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/screencloud/browser-cache-size-test.git"
+  },
+  "keywords": [
+    "browser",
+    "cache",
+    "size",
+    "screencloud"
+  ],
+  "author": "luke hubbard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/screencloud/browser-cache-size-test/issues"
+  },
+  "homepage": "https://github.com/screencloud/browser-cache-size-test#readme"
+}

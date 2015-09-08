@@ -1,0 +1,16 @@
+<html>
+<body>
+<!-- import as script or use browserify --> 
+<script src="./index.js"></script> 
+<script>
+
+// if using browserify 
+// var browserCacheSizeTest = require('browser-cache-size-test'); 
+
+browserCacheSizeTest(function(size){
+	alert("cache is about "+size+"mb"); 
+});
+
+</script>
+</body>
+</html>
